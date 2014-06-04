@@ -1,0 +1,225 @@
+<!doctype html>
+<html ng-app>
+	<head>
+<script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
+	</head> 
+  <body>
+  <div ng-controller="Hello">
+      Address: <input type="text" id="userAddress" ng-model="address"> <button ng-click="getAddress()">GO</button>
+      <p>Result : {{address}}
+      <!-- {{greeting}} -->
+      <ul>
+      <li>Address: {{greeting.normalizedInput.line1 | uppercase}}</li>
+      <li>City: {{greeting.normalizedInput.city | uppercase}}</li>
+      <li>State: {{greeting.normalizedInput.state | uppercase}}</li>
+      <li>Zip: {{greeting.normalizedInput.zip}}</li>
+      <li>Offices:</li>
+        <ul>
+          <li>{{greeting.offices.O0.name}}</li>
+          <li>{{greeting.offices.O1.name}}</li>
+          <li>{{greeting.offices.O2.name}}</li>
+          <li>{{greeting.offices.O3.name}}</li>
+          <li>{{greeting.offices.O4.name}}</li>
+          <li>{{greeting.offices.O5.name}}</li>
+          <li>{{greeting.offices.O6.name}}</li>
+          <li>{{greeting.offices.O7.name}}</li>
+          <li>{{greeting.offices.O8.name}}</li>
+          <li>{{greeting.offices.O9.name}}</li>
+          <li>{{greeting.offices.O10.name}}</li>
+          <li>{{greeting.offices.O11.name}}</li>
+          <li>{{greeting.offices.O12.name}}</li>
+        </ul>
+      <li>Officials: <li>
+      <ul>
+          <li>{{greeting.officials.P0.name}}</li>
+            <ul>
+              <li>Address: {{greeting.officials.P0.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P0.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P0.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P0.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P0.party}}</li>
+              <li>Phone: {{greeting.officials.P0.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P0.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P0.urls[0]}}>{{greeting.officials.P0.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P0.photoUrl}}>{{greeting.officials.P0.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P0.channels[0].type}} ID: {{greeting.officials.P0.channels[0].id}}</li>
+              <li>{{greeting.officials.P0.channels[1].type}} ID: {{greeting.officials.P0.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P1.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P1.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P1.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P1.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P1.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P1.party}}</li>
+              <li>Phone: {{greeting.officials.P1.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P1.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P1.urls[0]}}>{{greeting.officials.P1.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P1.photoUrl}}>{{greeting.officials.P1.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P1.channels[0].type}} ID: {{greeting.officials.P1.channels[0].id}}</li>
+              <li>{{greeting.officials.P1.channels[1].type}} ID: {{greeting.officials.P1.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P2.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P2.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P2.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P2.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P2.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P2.party}}</li>
+              <li>Phone: {{greeting.officials.P2.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P2.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P2.urls[0]}}>{{greeting.officials.P2.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P2.photoUrl}}>{{greeting.officials.P2.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P2.channels[0].type}} ID: {{greeting.officials.P2.channels[0].id}}</li>
+              <li>{{greeting.officials.P2.channels[1].type}} ID: {{greeting.officials.P2.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P3.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P3.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P3.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P3.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P3.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P3.party}}</li>
+              <li>Phone: {{greeting.officials.P3.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P3.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P3.urls[0]}}>{{greeting.officials.P3.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P3.photoUrl}}>{{greeting.officials.P3.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P3.channels[0].type}} ID: {{greeting.officials.P3.channels[0].id}}</li>
+              <li>{{greeting.officials.P3.channels[1].type}} ID: {{greeting.officials.P3.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P4.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P4.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P4.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P4.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P4.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P4.party}}</li>
+              <li>Phone: {{greeting.officials.P4.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P4.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P4.urls[0]}}>{{greeting.officials.P4.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P4.photoUrl}}>{{greeting.officials.P4.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P4.channels[0].type}} ID: {{greeting.officials.P4.channels[0].id}}</li>
+              <li>{{greeting.officials.P4.channels[1].type}} ID: {{greeting.officials.P4.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P5.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P5.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P5.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P5.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P5.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P5.party}}</li>
+              <li>Phone: {{greeting.officials.P5.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P5.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P5.urls[0]}}>{{greeting.officials.P5.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P5.photoUrl}}>{{greeting.officials.P5.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P5.channels[0].type}} ID: {{greeting.officials.P5.channels[0].id}}</li>
+              <li>{{greeting.officials.P5.channels[1].type}} ID: {{greeting.officials.P5.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P6.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P6.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P6.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P6.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P6.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P6.party}}</li>
+              <li>Phone: {{greeting.officials.P6.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P6.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P6.urls[0]}}>{{greeting.officials.P6.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P6.photoUrl}}>{{greeting.officials.P6.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P6.channels[0].type}} ID: {{greeting.officials.P6.channels[0].id}}</li>
+              <li>{{greeting.officials.P6.channels[1].type}} ID: {{greeting.officials.P6.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P7.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P7.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P7.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P7.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P7.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P7.party}}</li>
+              <li>Phone: {{greeting.officials.P7.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P7.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P7.urls[0]}}>{{greeting.officials.P7.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P7.photoUrl}}>{{greeting.officials.P7.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P7.channels[0].type}} ID: {{greeting.officials.P7.channels[0].id}}</li>
+              <li>{{greeting.officials.P7.channels[1].type}} ID: {{greeting.officials.P7.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P8.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P8.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P8.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P8.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P8.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P8.party}}</li>
+              <li>Phone: {{greeting.officials.P8.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P8.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P8.urls[0]}}>{{greeting.officials.P8.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P8.photoUrl}}>{{greeting.officials.P8.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P8.channels[0].type}} ID: {{greeting.officials.P8.channels[0].id}}</li>
+              <li>{{greeting.officials.P8.channels[1].type}} ID: {{greeting.officials.P8.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P9.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P9.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P9.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P9.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P9.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P9.party}}</li>
+              <li>Phone: {{greeting.officials.P9.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P9.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P9.urls[0]}}>{{greeting.officials.P9.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P9.photoUrl}}>{{greeting.officials.P9.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P9.channels[0].type}} ID: {{greeting.officials.P9.channels[0].id}}</li>
+              <li>{{greeting.officials.P9.channels[1].type}} ID: {{greeting.officials.P9.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P10.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P10.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P10.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P10.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P10.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P10.party}}</li>
+              <li>Phone: {{greeting.officials.P10.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P10.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P10.urls[0]}}>{{greeting.officials.P10.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P10.photoUrl}}>{{greeting.officials.P10.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P10.channels[0].type}} ID: {{greeting.officials.P10.channels[0].id}}</li>
+              <li>{{greeting.officials.P10.channels[1].type}} ID: {{greeting.officials.P10.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P11.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P11.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P11.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P11.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P11.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P11.party}}</li>
+              <li>Phone: {{greeting.officials.P11.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P11.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P11.urls[0]}}>{{greeting.officials.P11.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P11.photoUrl}}>{{greeting.officials.P11.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P11.channels[0].type}} ID: {{greeting.officials.P11.channels[0].id}}</li>
+              <li>{{greeting.officials.P11.channels[1].type}} ID: {{greeting.officials.P11.channels[1].id}}</li>
+            </ul>
+          <li>{{greeting.officials.P12.name}}</li>
+          <ul>
+              <li>Address: {{greeting.officials.P12.address[0].line1}}</li>
+              <li>City: {{greeting.officials.P12.address[0].city | uppercase}}</li>
+              <li>State: {{greeting.officials.P12.address[0].state | uppercase}}</li>
+              <li>Zip: {{greeting.officials.P12.address[0].zip}}</li>
+              <li>Party: {{greeting.officials.P12.party}}</li>
+              <li>Phone: {{greeting.officials.P12.phones[0]}}</li>
+              <li>Email: {{greeting.officials.P12.emails[0]}}</li>
+              <li>Website: <a href={{greeting.officials.P12.urls[0]}}>{{greeting.officials.P12.urls[0]}}</a></li>
+              <li>Photo: <a href={{greeting.officials.P12.photoUrl}}>{{greeting.officials.P12.photoUrl}}</a></li>
+              <li>Social Media: {{greeting.officials.P12.channels[0].type}} ID: {{greeting.officials.P12.channels[0].id}}</li>
+              <li>{{greeting.officials.P12.channels[1].type}} ID: {{greeting.officials.P12.channels[1].id}}</li>
+            </ul>
+        </ul>
+      </ul>
+      </p>
+    </div>
+   	
+    <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script>
+    <script src="app.js"></script>
+	</body>
+</html>
