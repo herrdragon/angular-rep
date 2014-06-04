@@ -5,8 +5,10 @@
 	</head> 
   <body>
   <div ng-controller="Hello">
-      Address: <input type="text" id="userAddress" ng-model="address"> <button ng-click="getAddress()">GO</button>
-      <p>Result : {{address}}
+      <p>Address: <input type="text" id="userAddress" ng-model="address"> City: <input type="text" id="city" ng-model="city"></p>
+      <p>State: <input type="text" id="state" value="FL" readonly></p>
+      <button ng-click="getAddress()">GO NOW!</button>
+      <p>Result : {{address}} {{city}} {{state}}
       <!-- {{greeting}} -->
       <ul>
       <li>Address: {{greeting.normalizedInput.line1 | uppercase}}</li>
