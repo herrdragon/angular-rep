@@ -4,18 +4,18 @@
 <script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
 	</head> 
   <body>
-  <div ng-controller="Hello">
+  <div ng-controller="callApi">
       <p>Address: <input type="text" id="userAddress" ng-model="address"> City: <input type="text" id="city" ng-model="city"></p>
-      <p>State: <input type="text" id="state" value="FL" readonly></p>
-      <button ng-click="getAddress()">GO NOW!</button>
-      <p>Result : {{address}} {{city}} {{state}}
+      <button ng-click="getAddress()">GO NOW!</button> or <button ng-click="geolocateUser()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
       <!-- {{greeting}} -->
+      <div ng-show="result">
       <ul>
       <li>Address: {{greeting.normalizedInput.line1 | uppercase}}</li>
       <li>City: {{greeting.normalizedInput.city | uppercase}}</li>
       <li>State: {{greeting.normalizedInput.state | uppercase}}</li>
       <li>Zip: {{greeting.normalizedInput.zip}}</li>
-      <li>Offices:</li>
+      
+      <p>Offices:</p>
         <ul>
           <li>{{greeting.offices.O0.name}}</li>
           <li>{{greeting.offices.O1.name}}</li>
@@ -31,9 +31,8 @@
           <li>{{greeting.offices.O11.name}}</li>
           <li>{{greeting.offices.O12.name}}</li>
         </ul>
-      <li>Officials: <li>
-      <ul>
-          <li>{{greeting.officials.P0.name}}</li>
+      <p>Officials: <p>
+          {{greeting.officials.P0.name}}
             <ul>
               <li>Address: {{greeting.officials.P0.address[0].line1}}</li>
               <li>City: {{greeting.officials.P0.address[0].city | uppercase}}</li>
@@ -216,10 +215,9 @@
               <li>{{greeting.officials.P12.channels[1].type}} ID: {{greeting.officials.P12.channels[1].id}}</li>
             </ul>
         </ul>
-      </ul>
       </p>
     </div>
-   	
+   	</div>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script>
     <script src="app.js"></script>
