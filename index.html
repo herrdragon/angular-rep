@@ -1,12 +1,13 @@
 <!doctype html>
 <html ng-app>
 	<head>
-<script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	</head> 
   <body>
   <div ng-controller="callApi">
       <p>Address: <input type="text" id="userAddress" ng-model="address"> City: <input type="text" id="city" ng-model="city"></p>
-      <button ng-click="getAddress()">GO NOW!</button> or <button ng-click="geolocateUser()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
+      <button ng-click="getAddress()">GO NOW!</button> or <button ng-click="onLocationFound()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
       <!-- {{greeting}} -->
       <div ng-show="result">
       <ul>
@@ -31,7 +32,7 @@
           <li>{{greeting.offices.O11.name}}</li>
           <li>{{greeting.offices.O12.name}}</li>
         </ul>
-      <p>Officials: <p>
+      <p>Officials: </p>
           {{greeting.officials.P0.name}}
             <ul>
               <li>Address: {{greeting.officials.P0.address[0].line1}}</li>
@@ -215,11 +216,14 @@
               <li>{{greeting.officials.P12.channels[1].type}} ID: {{greeting.officials.P12.channels[1].id}}</li>
             </ul>
         </ul>
-      </p>
     </div>
+     <div id="map"></div>
    	</div>
+    <script>console.log({greeting.offfices});</script>
+    <script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script>
     <script src="app.js"></script>
+    
 	</body>
 </html>
