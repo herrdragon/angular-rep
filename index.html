@@ -1,13 +1,13 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="RepMiami">
 	<head>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	</head> 
-  <body>
+  <body ng-controller="MainCtrl">
   <div ng-controller="callApi">
       <p>Address: <input type="text" id="userAddress" ng-model="address"> City: <input type="text" id="city" ng-model="city"></p>
-      <button ng-click="getAddress()">GO NOW!</button> or <button ng-click="onLocationFound()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
+      <button ng-click="getAddress()">GO NOW!</button> or <button ng-click="geolocateUser()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
       <!-- {{greeting}} -->
       <div ng-show="result">
       <ul>
@@ -219,7 +219,7 @@
     </div>
      <div id="map"></div>
    	</div>
-    <script>console.log({greeting.offfices});</script>
+    <!-- <script>console.log({greeting.offfices});</script> -->
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script>
