@@ -19,7 +19,18 @@
     var repmiami = angular.module('RepMiami', []);
     repmiami.controller('MainCtrl', ['$scope', function($scope){}]);
 
-
+    repmiami.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+});
 
     function callApi($scope, $http) {
       $scope.getAddress = function() {
@@ -29,10 +40,16 @@
             $http.post('https://www.googleapis.com/civicinfo/us_v1/representatives/lookup?key=AIzaSyCN9rkEJ848kuw9-YO7vZ41Mt7v2bhckcs'
                 ,{'address': $scope.userAddress+' '+$scope.city+' '+$scope.state}).success(function(data) {
                     $scope.greeting = data;
-                    $scope.result = true;
+                    var dade = "Miami-Dade County"
+                    var county = $scope.greeting.divisions;
+                    if(county[Object.keys(county)[2]].name === dade){
+                        $scope.result = true;
+                    }else{
+                        alert('You are address is not in '+dade)
+                    }
             });
         };
-
+        
             $scope.geolocateUser = function() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
