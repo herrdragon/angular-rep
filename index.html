@@ -1,9 +1,9 @@
 <!doctype html>
 <html ng-app="RepMiami">
 	<head>
-  <script src="http://leafletjs.com/dist/leaflet.js"></script>
+  <!-- // <script src="http://leafletjs.com/dist/leaflet.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-  <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
+  <!-- <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" /> -->
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="style.css" />
 	</head> 
@@ -80,7 +80,7 @@
                   <li>Phone: {{official.phones[0]}}</li>
                   <li>Email: {{official.emails[0]}}</li>
                   <li>Website: <a href={{official.urls}}>{{official.urls}}</a></li>
-                  <li>Photo: <a href={{official.photoUrl}}>{{official.photoUrl}}</a></li>
+                  <li>Photo: <img src={{official.photoUrl}}></li>
                   <li>Social Media: {{official.channels.type}} ID: {{official.channels.id}}</li>
                   <li>{{official.channels.type}} ID: {{official.channels.id}}</li>
               </ul>
@@ -88,9 +88,9 @@
         </ul>
     </div>
    	</div>
-    <script src="https://code.angularjs.org/1.3.0-beta.9/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script>
-    <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script>
+    <script src="angular.min.js"></script>
+    <!-- // <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script> -->
+    <!-- // <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script> -->
     <script src="app.js"></script>
     
 	</body>
