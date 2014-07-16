@@ -1,97 +1,115 @@
 <!doctype html>
-<html ng-app="RepMiami">
-	<head>
-  <!-- // <script src="http://leafletjs.com/dist/leaflet.js"></script> -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-  <!-- <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" /> -->
-  <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="style.css" />
-	</head> 
+<html ng-app="RepMiami" ng-cloak>
+  <head>
+    <!-- // <script src="http://leafletjs.com/dist/leaflet.js"></script> -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <!-- <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" /> -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head> 
   <body ng-controller="MainCtrl">
-  <div ng-controller="callApi">
-  <div class="push"></div>
-  <div class="col-md-6 address"><p><select ng-model="city" autofocus>
-                            <option value="Miami">Miami</option>
-                            <option value="Aventura">Aventura</option>
-                            <option value="Bal Harbour">Bal Harbour</option>
-                            <option value="Bay Harbor Islands">Bay Harbor Islands</option>
-                            <option value="Biscayne Park">Biscayne Park</option>
-                            <option value="Coral Gables">Coral Gables</option>
-                            <option value="Cutler Bay">Cutler Bay</option>
-                            <option value="Doral">Doral</option>
-                            <option value="El Portal">El Portal</option>
-                            <option value="Florida City">Florida City</option>
-                            <option value="Golden Beach">Golden Beach</option>
-                            <option value="Hialeah">Hialeah</option>
-                            <option value="Hialeah Gardens">Hialeah Gardens</option>
-                            <option value="Homestead">Homestead</option>
-                            <option value="Indian Creek">Indian Creek</option>
-                            <option value="Key Biscayne">Key Biscayne</option>
-                            <option value="Medley">Medley</option>
-                            <option value="Miami Beach">Miami Beach</option>
-                            <option value="Miami Gardens">Miami Gardens</option>
-                            <option value="Miami Lakes">Miami Lakes</option>
-                            <option value="Miami Shores">Miami Shores Village</option>
-                            <option value="Miami Springs">Miami Springs</option>
-                            <option value="North Bay Village">North Bay Village</option>
-                            <option value="North Miami">North Miami</option>
-                            <option value="North Miami Beach">North Miami Beach</option>
-                            <option value="Opa-Locka">Opa-Locka</option>
-                            <option value="Palmeto Bay">Palmeto Bay</option>
-                            <option value="Pinecrest">Pinecrest</option>
-                            <option value="South Miami">South Miami</option>
-                            <option value="Sunny Isles Beach">Sunny Isles Beach</option>
-                            <option value="Surfside">Surfside</option>
-                            <option value="Sweetwater">Sweetwater</option>
-                            <option value="Virginia Gardens">Virginia Gardens</option>
-                            <option value="West Miami">West Miami</option>
-                        </select> City: <input type="text" id="city" ng-model="city" ng-enter="getAddress()"></p>
-      <p>Address: <input type="text" id="userAddress" ng-model="userAddress" ng-enter="getAddress()">  
-      <button class="btn btn-default" ng-click="getAddress()">GO NOW!</button> or <button ng-click="geolocateUser()" type='button' name="locateButton" class="btn btn-primary1 form-font">Use current location <span class="glyphicon glyphicon-map-marker"></span></button>
-    </div>
-      <!-- {{greeting}} -->
-      <div ng-show="result">
-      <p>
+  <div class="col-md-6 address">
+    <p>
+      <!-- 
+        TODO: move select to ng; add ng-options to feed from ng constant or dynamically created
+      -->
+      <select ng-model="city" ng-hide="hideCity">
+        <option value="">Select One</option>
+        <option value="Miami">Miami</option>
+        <option value="Aventura">Aventura</option>
+        <option value="Bal Harbour">Bal Harbour</option>
+        <option value="Bay Harbor Islands">Bay Harbor Islands</option>
+        <option value="Biscayne Park">Biscayne Park</option>
+        <option value="Coral Gables">Coral Gables</option>
+        <option value="Cutler Bay">Cutler Bay</option>
+        <option value="Doral">Doral</option>
+        <option value="El Portal">El Portal</option>
+        <option value="Florida City">Florida City</option>
+        <option value="Golden Beach">Golden Beach</option>
+        <option value="Hialeah">Hialeah</option>
+        <option value="Hialeah Gardens">Hialeah Gardens</option>
+        <option value="Homestead">Homestead</option>
+        <option value="Indian Creek">Indian Creek</option>
+        <option value="Key Biscayne">Key Biscayne</option>
+        <option value="Medley">Medley</option>
+        <option value="Miami Beach">Miami Beach</option>
+        <option value="Miami Gardens">Miami Gardens</option>
+        <option value="Miami Lakes">Miami Lakes</option>
+        <option value="Miami Shores">Miami Shores Village</option>
+        <option value="Miami Springs">Miami Springs</option>
+        <option value="North Bay Village">North Bay Village</option>
+        <option value="North Miami">North Miami</option>
+        <option value="North Miami Beach">North Miami Beach</option>
+        <option value="Opa-Locka">Opa-Locka</option>
+        <option value="Palmeto Bay">Palmeto Bay</option>
+        <option value="Pinecrest">Pinecrest</option>
+        <option value="South Miami">South Miami</option>
+        <option value="Sunny Isles Beach">Sunny Isles Beach</option>
+        <option value="Surfside">Surfside</option>
+        <option value="Sweetwater">Sweetwater</option>
+        <option value="Virginia Gardens">Virginia Gardens</option>
+        <option value="West Miami">West Miami</option>
+      </select>
+    City: <input type="text" id="city" ng-model="city" ng-enter="getAddress()"></p>
+    <p>
+      Address: <input type="text" id="userAddress" ng-model="userAddress" ng-enter="getAddress()">
+      <button class="btn btn-default" ng-click="getAddress()" ng-disable="hideCity">GO NOW!</button> or 
+      <button ng-click="geolocateUser()" 
+              type='button' name="locateButton" 
+              class="btn btn-primary1 form-font">
+        Use current location 
+        <span class="glyphicon glyphicon-map-marker"></span>
+      </button>
+    </p>
+  </div>
+  
+  <!-- 
+    TODO: this should be a view/partial
+  -->
+  <div ng-show="result">
+    <!-- {{greeting}} -->
+    <p>
       <ul>
-      <li>Address: {{greeting.normalizedInput.line1 | uppercase}}</li>
-      <li>City: {{greeting.normalizedInput.city | uppercase}}</li>
-      <li>State: {{greeting.normalizedInput.state | uppercase}}</li>
-      <li>Zip: {{greeting.normalizedInput.zip}}</li>
-      <li>County: Miami-Dade</li>
+        <li>Address: {{greeting.normalizedInput.line1 | uppercase}}</li>
+        <li>City: {{greeting.normalizedInput.city | uppercase}}</li>
+        <li>State: {{greeting.normalizedInput.state | uppercase}}</li>
+        <li>Zip: {{greeting.normalizedInput.zip}}</li>
+        <li>County: Miami-Dade</li>
       </ul>
-      </p>
-      
-      <p>Offices:</p>
-        <ul ng-repeat="office in greeting.offices">
-          <li>{{office.name}}</li>
+    </p>
+
+    <p>Offices:</p>
+    <ul ng-repeat="office in greeting.offices">
+      <li>{{office.name}}</li>
+    </ul>
+    <br>
+    Officials:
+    <ul ng-repeat="official in greeting.officials">
+      <li>{{official.name}}
+        <ul ng-repeat="addresses in official.address">
+          <li>Address: {{addresses.line1}}</li>
+          <li>City: {{addresses.city | uppercase}}</li>
+          <li>State: {{addresses.state | uppercase}}</li>
+          <li>Zip: {{addresses.zip}}</li>
         </ul>
-        <br>
-      Officials:
-            <ul ng-repeat="official in greeting.officials">
-            <li>{{official.name}}
-              <ul ng-repeat="addresses in official.address">
-                  <li>Address: {{addresses.line1}}</li>
-                  <li>City: {{addresses.city | uppercase}}</li>
-                  <li>State: {{addresses.state | uppercase}}</li>
-                  <li>Zip: {{addresses.zip}}</li>
-              </ul>
-              <ul>
-                  <li>Party: {{official.party}}</li>
-                  <li>Phone: {{official.phones[0]}}</li>
-                  <li>Email: {{official.emails[0]}}</li>
-                  <li>Website: <a href={{official.urls}}>{{official.urls}}</a></li>
-                  <li>Photo: <img src={{official.photoUrl}}></li>
-                  <li>Social Media: {{official.channels.type}} ID: {{official.channels.id}}</li>
-                  <li>{{official.channels.type}} ID: {{official.channels.id}}</li>
-              </ul>
-            </li>
+        <ul>
+          <li>Party: {{official.party}}</li>
+          <li>Phone: {{official.phones[0]}}</li>
+          <li>Email: {{official.emails[0]}}</li>
+          <li>Website: <a href={{official.urls}}>{{official.urls}}</a></li>
+          <li>Photo: <img ng-src={{official.photoUrl}}></li>
+          <li>Social Media: {{official.channels.type}} ID: {{official.channels.id}}</li>
+          <li>{{official.channels.type}} ID: {{official.channels.id}}</li>
         </ul>
-    </div>
-   	</div>
-    <script src="angular.min.js"></script>
-    <!-- // <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script> -->
-    <!-- // <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script> -->
-    <script src="app.js"></script>
-    
-	</body>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
+  <!-- <script src="https://code.angularjs.org/1.3.0-beta.9/angular-route.min.js"></script> -->
+  <!-- <script src="https://code.angularjs.org/1.3.0-beta.9/angular-resource.min.js"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <!-- <script src="https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/7/main.js"></script> -->
+  <script src="js/app.js"></script>
+  </body>
 </html>
